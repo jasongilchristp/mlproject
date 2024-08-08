@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+from src.logger import logging
 
 application = Flask(__name__)
 
@@ -19,7 +20,7 @@ def index():
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method=='GET':
-        return render_template('predict.html')
+        return render_template('predict.html',results='N/A')
     else:
         data = CustomData(
             gender = request.form.get('gender'),

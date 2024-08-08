@@ -4,28 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-        <title>My Flask App</title>
-        <script>
-            function formatResult() {
-                // Get the result element
-                var resultElement = document.getElementById('result-value');
-                
-                // Get the current result value and parse it as float
-                var resultValue = parseFloat(resultElement.innerText);
-                
-                // Cap the value at 100.00
-                var cappedValue = Math.min(resultValue, 100);
-                
-                // Round the capped value to 2 decimal places
-                var roundedValue = cappedValue.toFixed(2);
-                
-                // Update the result element with the rounded and capped value
-                resultElement.innerText = roundedValue;
-            }
-    
-            // Run the formatResult function once the document is loaded
-            document.addEventListener('DOMContentLoaded', formatResult);
-        </script>
+        <title>Student Exam Performance Indicator</title>
     </head>
     
 <body>
@@ -120,7 +99,7 @@
         <div class="mb-3">
             <label class="form-label">Writing Score out of 100</label>
             <input class="form-control" type="number" name="writing_score"
-                placeholder="Enter your Writing score" min='0' max='100' />
+                placeholder="Enter your Writing score" min='0' max='100'step="0.01" />
         </div>
         <div class="mb-3">
             <label class="form-label">Reading Score out of 100</label>
@@ -131,7 +110,7 @@
             <input class="btn btn-primary" type="submit" value="Predict your Maths Score" />
         </div>
     </form>
-    <h2>Your Math score is: <span id="result-value">{{ results }}</span></h2>
+    <h2>Your Math score is {{results}}</h2>
     <a href="{{ url_for('index') }}">Go Back</a>
     </div>
 </body>

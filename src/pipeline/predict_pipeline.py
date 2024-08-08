@@ -22,9 +22,8 @@ class PredictPipeline:
             data_scaled = preprocessor.transform(features)
 
             preds =  model.predict(data_scaled)
-            maths_score = max(preds,100.00)
 
-            return maths_score
+            return preds
         
         except Exception as e:
             raise CustomException(e,sys)
