@@ -17,7 +17,7 @@ from src.utils import save_objects
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join("artifacts", "preprocessor.pkl")  ## Pickel file path
 
-class DataTranformation:
+class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
 
@@ -60,10 +60,10 @@ class DataTranformation:
                     ("cat_pipeline", cat_pipeline,categorical_columns) ## column transformer is a combination of numerical and categorical pipelines
                 ]
             )
-
-            return preprocessor
         except Exception as e:
             raise CustomException(e, sys)
+        return preprocessor
+        
         
     def initiate_data_transformation(self, train_path, test_path):
         try:
